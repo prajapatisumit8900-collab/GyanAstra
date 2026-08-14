@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | GyanAstra Drive</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #0f172a;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .login-card {
+            background: #1e293b;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+        h2 { color: #ff9800; margin-bottom: 10px; font-size: 28px; }
+        p { color: #94a3b8; font-size: 14px; margin-bottom: 30px; }
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        label { display: block; margin-bottom: 8px; font-size: 14px; color: #cbd5e1; }
+        input {
+            width: 100%;
+            padding: 12px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            color: white;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input:focus { border-color: #ff9800; outline: none; }
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background: #ff9800;
+            border: none;
+            color: #111;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        .btn-login:hover { background: #e68a00; }
+
+        @media screen and (max-width: 480px) {
+            .login-card { padding: 25px; }
+            h2 { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <h2>GyanAstra Login</h2>
+        <p>Enter your credentials to access secure study material</p>
+        <div class="input-group">
+            <label>Student ID / Email</label>
+            <input type="text" id="studentId" placeholder="e.g. GA-SUMIT">
+        </div>
+        <div class="input-group">
+            <label>Password / PIN</label>
+            <input type="password" id="studentPass" placeholder="e.g. 123456">
+        </div>
+        <button class="btn-login" id="loginBtn">Login Securely</button>
+    </div>
+
+    <script>
+        document.getElementById('loginBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const idInput = document.getElementById('studentId').value.trim();
+            const passInput = document.getElementById('studentPass').value.trim();
+
+            if (!idInput || !passInput) {
+                alert("⚠️ Please enter both Student ID and Password!");
+                return;
+            }
+
+            // Default Guaranteed Users Database
+            let db = {
+                "GA-SUMIT": { pass: "123456", name: "Sumit (Owner)" },
+                "1234": { pass: "1234", name: "Test Student" }
+            };
+
+            // Read dynamic DB created from Admin Panel
+            try {
+                const localDB = localStorage.getItem('gyanAstraStudentsDB');
+                if (localDB) {
+                    const parsedDB = JSON.parse(localDB);
+                    db = { ...db, ...parsedDB };
+                }
+            } catch (err) {
+                console.log("LocalStorage Error, using default DB");
+            }
+
+            // Case-Insensitive ID Lookup Logic
+            let matchedUser = null;
+            let matchedKey = null;
+
+            for (let key in db) {
+                if (key.toLowerCase() === idInput.toLowerCase()) {
+                    matchedUser = db[key];
+                    matchedKey = key;
+                    break;
+                }
+            }
+
+            // Check Password Match
+            if (matchedUser && String(matchedUser.pass) === String(passInput)) {
+                localStorage.setItem("isGyanAstraLoggedIn", "true");
+                // Save user name and student ID for session
+                localStorage.setItem("loggedInStudent", matchedUser.name || matchedKey);
+                localStorage.setItem("loggedInStudentId", matchedKey);
+                
+                alert(`✅ Login Successful! Welcome ${matchedUser.name || matchedKey}`);
+                window.location.href = "categories.html";
+            } else {
+                alert("❌ Invalid Student ID or Password!");
+            }
+        });
+    </script>
+</body>
+</html>

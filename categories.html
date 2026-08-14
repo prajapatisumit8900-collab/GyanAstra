@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Category | GyanAstra</title>
+
+    <!-- 🔒 1. Security Check Script -->
+    <script>
+        if (localStorage.getItem("isGyanAstraLoggedIn") !== "true") {
+            alert("⚠️ Unauthorized Access! Please login first.");
+            window.location.href = "login.html";
+        }
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #0f172a;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+        }
+
+        /* Top Bar Styling */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            background: #1e293b;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+        .user-info {
+            color: #48cae4;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .btn-logout {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+        .btn-logout:hover {
+            background: #dc2626;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 { color: #ff9800; font-size: 28px; margin-bottom: 5px; }
+        p { color: #cbd5e1; font-size: 15px; }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .card:hover {
+            border-color: #ff9800;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+        .card-icon {
+            font-size: 45px;
+            margin-bottom: 12px;
+        }
+        .card h3 {
+            color: #ff9800;
+            margin: 0 0 10px 0;
+            font-size: 20px;
+        }
+        .card p {
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        @media screen and (max-width: 600px) {
+            body { padding: 15px; }
+            h1 { font-size: 22px; }
+            .top-bar { flex-direction: column; gap: 10px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top User Bar & Logout Button -->
+    <div class="top-bar">
+        <span class="user-info" id="studentWelcome">👤 Student Logged In</span>
+        <button class="btn-logout" onclick="logoutStudent()">Logout 🚪</button>
+    </div>
+
+    <header>
+        <h1>Select Study Category</h1>
+        <p>Choose your target exam or learning module</p>
+    </header>
+
+    <div class="card-grid">
+        <!-- 1. E-Library Link (categories फोल्डर के अंदर) -->
+        <a href="categories/e-library.html" class="card">
+            <div class="card-icon">📚</div>
+            <h3>E-Library & Notes</h3>
+            <p>Access high-quality PDFs, short notes, and complete study kits.</p>
+        </a>
+
+        <!-- 2. AI Audio Teacher Link (categories फोल्डर के अंदर) -->
+        <a href="categories/ai-voice-intro.html" class="card">
+            <div class="card-icon">🤖</div>
+            <h3>AI Audio Teacher</h3>
+            <p>Listen to intelligent voice breakdowns and conceptual classes.</p>
+        </a>
+
+        <!-- 3. UPSC Link -->
+        <a href="courses/player.html" class="card">
+            <div class="card-icon">🎯</div>
+            <h3>UPSC & Govt Exams</h3>
+            <p>Comprehensive packages for civil services and competitive exams.</p>
+        </a>
+    </div>
+
+    <!-- User Information & Logout Handler Script -->
+    <script>
+        // Display current student ID correctly
+        const student = localStorage.getItem("loggedInStudent") || localStorage.getItem("isGyanAstraLoggedIn") || "Active Student";
+        document.getElementById('studentWelcome').innerText = "👤 Logged in as: " + student;
+
+        function logoutStudent() {
+            localStorage.removeItem("isGyanAstraLoggedIn");
+            localStorage.removeItem("loggedInStudent");
+            alert("Logout Successful!");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>
