@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GyanAstra - Premium UI & Working AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ================= GLOBAL STYLES ================= */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Nunito', sans-serif; user-select: none; -webkit-tap-highlight-color: transparent; }
+        body { background: #f7f9fa; color: #3c3c3c; overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
+        
+        .screen { display: none; flex-direction: column; height: 100vh; width: 100%; max-width: 500px; margin: 0 auto; position: relative; background: #ffffff; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+        .screen.active { display: flex; animation: slideIn 0.3s ease; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+
+        /* ================= DASHBOARD SCREEN ================= */
+        .top-bar { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: #fff; border-bottom: 2px solid #e5e5e5; z-index: 10; }
+        .lang-select { background: #f0f0f0; padding: 5px 12px; border-radius: 12px; font-weight: 800; font-size: 14px; }
+        .stats-right { display: flex; gap: 15px; font-weight: 800; font-size: 16px; align-items: center; }
+        .stat-icon { display: inline-flex; align-items: center; gap: 4px; }
+
+        .dash-content { flex: 1; overflow-y: auto; padding: 20px; padding-bottom: 100px; background: #f2fbfd; }
+
+        /* Module Header */
+        .module-header {
+            background: linear-gradient(135deg, #ff9a44, #fc6076);
+            border-radius: 20px; padding: 25px 20px; color: white; margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(252, 96, 118, 0.2); cursor: pointer;
+        }
+        .module-subtitle { font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
+        .module-title { font-size: 22px; font-weight: 900; line-height: 1.2; }
+        .module-hindi { font-size: 14px; opacity: 0.9; margin-top: 4px; }
+
+        /* Vertical Path */
+        .path-container { position: relative; margin-left: 20px; padding-bottom: 20px; }
+        .path-line { position: absolute; left: 32px; top: 0; bottom: 0; width: 4px; background: #fca5a5; z-index: 1; }
+        
+        .path-node { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; position: relative; z-index: 2; cursor: pointer; }
+        .path-node:active { transform: scale(0.98); }
+        .node-icon-wrapper { position: relative; width: 68px; height: 68px; border-radius: 50%; background: white; border: 4px solid #ff9a44; display: grid; place-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .node-icon { font-size: 30px; }
+        .node-check { position: absolute; bottom: -4px; right: -4px; background: #22c55e; color: white; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; border: 2px solid white; }
+        
+        .node-card { background: white; flex: 1; padding: 15px 20px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 2px solid transparent; }
+        .path-node.active .node-card { border-color: #ff9a44; }
+        .node-title { font-size: 18px; font-weight: 800; color: #1f2937; }
+        .node-subtitle { font-size: 13px; color: #6b7280; font-weight: 600; }
+
+        /* Grid Categories */
+        .section-title { text-align: center; font-size: 20px; font-weight: 900; color: #1f2937; margin: 40px 0 20px; }
+        .grid-menu { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .grid-item { background: white; border-radius: 20px; padding: 25px 15px; text-align: center; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: 0.2s; }
+        .grid-item:active { transform: translateY(4px); }
+        .grid-icon { width: 60px; height: 60px; border-radius: 16px; display: grid; place-items: center; font-size: 30px; margin: 0 auto 15px; color: white; }
+        .grid-title { font-size: 15px; font-weight: 800; color: #374151; }
+
+        /* Bottom Nav */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; max-width: 500px; margin: 0 auto; background: white; border-top: 2px solid #e5e5e5; display: flex; justify-content: space-around; padding: 12px 10px 25px; z-index: 100; }
+        .nav-btn { background: none; border: none; display: flex; flex-direction: column; align-items: center; gap: 6px; color: #9ca3af; font-weight: 800; font-size: 12px; cursor: pointer; }
+        .nav-btn i { font-size: 24px; font-style: normal; }
+        .nav-btn.active { color: #f97316; }
+
+        /* ================= LESSON SCREEN (Duolingo Style) ================= */
+        .lesson-screen-wrapper { background: #ce82ff; flex: 1; display: flex; flex-direction: column; transition: background 0.5s ease; }
+        .lesson-header { display: flex; align-items: center; padding: 20px; gap: 15px; }
+        .btn-close { background: none; border: none; color: white; font-size: 28px; cursor: pointer; opacity: 0.8; }
+        
+        .progress-track { flex: 1; height: 16px; background: rgba(255,255,255,0.3); border-radius: 10px; overflow: hidden; position: relative; }
+        .progress-fill { height: 100%; width: 50%; background: #ffc800; border-radius: 10px; transition: width 0.3s ease; }
+        .heart-count { color: white; font-weight: 900; font-size: 18px; display: flex; align-items: center; gap: 5px; }
+
+        .lesson-card { background: white; flex: 1; border-top-left-radius: 30px; border-top-right-radius: 30px; padding: 30px 20px; display: flex; flex-direction: column; overflow-y: auto; padding-bottom: 140px; }
+        .lesson-instruction { font-size: 24px; font-weight: 900; color: #3c3c3c; margin-bottom: 25px; }
+        
+        .char-area { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 30px; }
+        .char-avatar { font-size: 70px; }
+        
+        .speech-bubble { border: 2px solid #e5e5e5; border-radius: 16px; padding: 15px 20px; position: relative; display: flex; align-items: center; gap: 12px; flex: 1; }
+        .btn-audio { background: #1cb0f6; border: none; border-bottom: 4px solid #1899d6; color: white; width: 45px; height: 45px; border-radius: 12px; font-size: 20px; cursor: pointer; display: grid; place-items: center; }
+        .speech-text { font-size: 18px; font-weight: 600; color: #3c3c3c; }
+
+        /* Word Blocks */
+        .answer-lines { min-height: 60px; border-bottom: 2px solid #e5e5e5; border-top: 2px solid #e5e5e5; padding: 15px 0; margin-bottom: 25px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .word-bank { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .word-chip { border: 2px solid #e5e5e5; border-bottom: 4px solid #e5e5e5; border-radius: 12px; padding: 12px 18px; font-size: 18px; font-weight: 700; color: #3c3c3c; cursor: pointer; background: white; }
+        .word-chip.placeholder { background: #e5e5e5; border-color: #e5e5e5; color: transparent; pointer-events: none; }
+
+        /* Bottom Feedback Drawer */
+        .bottom-action-bar { position: fixed; bottom: 0; left: 0; right: 0; max-width: 500px; margin: 0 auto; background: white; border-top: 2px solid #e5e5e5; padding: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 100; }
+        .bottom-action-bar.correct { background: #d7ffb8; border-top-color: #d7ffb8; }
+        .bottom-action-bar.wrong { background: #ffdfe0; border-top-color: #ffdfe0; }
+        
+        .feedback-text { display: none; font-size: 20px; font-weight: 900; }
+        .bottom-action-bar.correct .feedback-text { display: block; color: #58a700; }
+        .bottom-action-bar.wrong .feedback-text { display: block; color: #ea2b2b; }
+        .feedback-sub { display: none; font-size: 15px; font-weight: 700; color: #ea2b2b; margin-top: 4px; }
+        .bottom-action-bar.wrong .feedback-sub { display: block; }
+
+        .btn-check-action { background: #e5e5e5; color: #afafaf; border: none; border-bottom: 4px solid #cecece; border-radius: 16px; padding: 16px; font-size: 18px; font-weight: 900; text-transform: uppercase; cursor: pointer; width: 100%; }
+        .btn-check-action.active { background: #58cc02; color: white; border-bottom-color: #58a700; }
+        .bottom-action-bar.correct .btn-check-action { background: #58cc02; color: white; border-bottom-color: #58a700; }
+        .bottom-action-bar.wrong .btn-check-action { background: #ff4b4b; color: white; border-bottom-color: #ea2b2b; }
+
+        /* Mic Container */
+        .mic-container { display: none; flex-direction: column; align-items: center; margin-top: 20px; }
+        .btn-mic-large { width: 100px; height: 100px; border-radius: 50%; background: #1cb0f6; border: none; border-bottom: 8px solid #1899d6; color: white; font-size: 40px; cursor: pointer; display: grid; place-items: center; }
+        .btn-mic-large.listening { background: #ff4b4b; border-bottom-color: #ea2b2b; animation: pulseMic 1s infinite alternate; }
+        @keyframes pulseMic { from { box-shadow: 0 0 0 0 rgba(255, 75, 75, 0.4); } to { box-shadow: 0 0 0 20px rgba(255, 75, 75, 0); } }
+
+        /* ================= AI CHAT SCREEN ================= */
+        .ai-chat-screen { background: #f0fdf4; flex: 1; display: flex; flex-direction: column; }
+        .ai-chat-header { background: #22c55e; color: white; padding: 15px 20px; display: flex; align-items: center; gap: 15px; font-size: 20px; font-weight: 800; }
+        .chat-box { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; padding-bottom: 120px; }
+        .msg { max-width: 80%; padding: 15px; border-radius: 16px; font-size: 16px; font-weight: 700; line-height: 1.4; }
+        .msg-ai { background: white; border: 2px solid #e5e5e5; align-self: flex-start; color: #374151; }
+        .msg-user { background: #22c55e; color: white; align-self: flex-end; }
+        
+        .ai-mic-area { position: fixed; bottom: 0; left: 0; right: 0; max-width: 500px; margin: 0 auto; background: white; padding: 20px; border-top: 2px solid #e5e5e5; text-align: center; z-index: 100; }
+    </style>
+</head>
+<body>
+
+    <!-- ==============================================
+         SCREEN 1: DASHBOARD
+    =============================================== -->
+    <div id="screen-dashboard" class="screen active">
+        <div class="top-bar">
+            <div class="lang-select">हि ⌄ Level 1</div>
+            <div class="stats-right">
+                <div class="stat-icon icon-gem">🔮 <span style="color:#3c3c3c;">646</span></div>
+                <div class="stat-icon icon-coin">🪙 <span style="color:#3c3c3c;">204</span></div>
+            </div>
+        </div>
+
+        <div class="dash-content">
+            <div class="module-header" onclick="startLesson('orange', 'translate')">
+                <div class="module-subtitle">MODULE 1 | TOPIC 1</div>
+                <div class="module-title">Everyday Life : Daily English</div>
+                <div class="module-hindi">रोज़ की अंग्रेज़ी</div>
+            </div>
+
+            <!-- Vertical Path -->
+            <div class="path-container">
+                <div class="path-line"></div>
+                <div class="path-node active" onclick="startLesson('purple', 'translate')">
+                    <div class="node-icon-wrapper"><div class="node-icon">📖</div><div class="node-check">✓</div></div>
+                    <div class="node-card"><div class="node-title">Vocabulary</div><div class="node-subtitle">शब्दावली</div></div>
+                </div>
+                <div class="path-node" onclick="startLesson('green', 'listen')">
+                    <div class="node-icon-wrapper"><div class="node-icon">👩‍🏫</div><div class="node-check">✓</div></div>
+                    <div class="node-card"><div class="node-title">Read with me</div><div class="node-subtitle">मेरे साथ पढ़ें</div></div>
+                </div>
+                <div class="path-node" onclick="startLesson('blue', 'speak')">
+                    <div class="node-icon-wrapper"><div class="node-icon">🔍</div></div>
+                    <div class="node-card"><div class="node-title">Grammar</div><div class="node-subtitle">व्याकरण</div></div>
+                </div>
+            </div>
+
+            <div class="section-title">SPEAK WITHOUT LIMITS</div>
+            <p style="text-align: center; color: #6b7280; margin-bottom: 20px; font-weight: 700;">Browse all topics</p>
+            
+            <div class="grid-menu">
+                <div class="grid-item bg-red" onclick="startLesson('red', 'translate')">
+                    <div class="grid-icon" style="background:#ef4444;">📄</div><div class="grid-title">Document Translation</div>
+                </div>
+                <div class="grid-item bg-purple" onclick="startLesson('purple', 'listen')">
+                    <div class="grid-icon" style="background:#a855f7;">📷</div><div class="grid-title">Scan & Offline Mode</div>
+                </div>
+                <div class="grid-item bg-orange" onclick="startLesson('orange', 'speak')">
+                    <div class="grid-icon" style="background:#f97316;">✈️</div><div class="grid-title">Travel Phrases</div>
+                </div>
+                <div class="grid-item bg-blue" onclick="openAIChat()">
+                    <div class="grid-icon" style="background:#3b82f6;">🤖</div><div class="grid-title">AI Chatbot</div>
+                </div>
+                <div class="grid-item bg-green" onclick="startLesson('green', 'speak')">
+                    <div class="grid-icon" style="background:#22c55e;">🏨</div><div class="grid-title">Dining & Hotels</div>
+                </div>
+                <div class="grid-item bg-purple" onclick="openAIChat()">
+                    <div class="grid-icon" style="background:#4f46e5;">🗣️</div><div class="grid-title">Voice Conversation</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <button class="nav-btn active" onclick="switchScreen('screen-dashboard')"><i>🏠</i>Home</button>
+            <button class="nav-btn" onclick="alert('Membership feature active!')"><i>⭐</i>Membership</button>
+            <button class="nav-btn" onclick="openAIChat()"><i>📞</i>AI Call</button>
+            <button class="nav-btn" onclick="alert('Your streak is 5 days!')"><i>📊</i>Progress</button>
+        </div>
+    </div>
+
+    <!-- ==============================================
+         SCREEN 2: LESSON SCREEN
+    =============================================== -->
+    <div id="screen-lesson" class="screen">
+        <div class="lesson-screen-wrapper" id="lesson-bg">
+            <div class="lesson-header">
+                <button class="btn-close" onclick="switchScreen('screen-dashboard')">✕</button>
+                <div class="progress-track"><div class="progress-fill" id="progress-bar" style="width: 30%;"></div></div>
+                <div class="heart-count">❤️ 5</div>
+            </div>
+
+            <div class="lesson-card">
+                <div class="lesson-instruction" id="q-title">Translate this sentence</div>
+                
+                <div class="char-area">
+                    <div class="char-avatar" id="q-avatar">🐻</div>
+                    <div class="speech-bubble">
+                        <button class="btn-audio" onclick="playAudio()">🔊</button>
+                        <div class="speech-text" id="q-text">I want a salad.</div>
+                    </div>
+                </div>
+
+                <div id="ui-translate" style="display:block;">
+                    <div class="answer-lines" id="answer-box"></div>
+                    <div class="word-bank" id="word-bank"></div>
+                </div>
+
+                <div id="ui-speak" class="mic-container">
+                    <button class="btn-mic-large" id="lesson-mic-btn" onclick="toggleLessonMic()">🎙️</button>
+                    <div id="lesson-mic-res" style="margin-top:20px; font-weight:800; color:#1cb0f6; font-size:18px;">TAP TO SPEAK</div>
+                </div>
+            </div>
+
+            <div class="bottom-action-bar" id="action-bar">
+                <div>
+                    <div class="feedback-text" id="fb-title">Correct!</div>
+                    <div class="feedback-sub" id="fb-sub">Correct answer: Yo quiero una ensalada</div>
+                </div>
+                <button class="btn-check-action" id="btn-check" disabled onclick="checkAnswer()">CHECK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==============================================
+         SCREEN 3: AI CHAT SCREEN
+    =============================================== -->
+    <div id="screen-ai" class="screen">
+        <div class="ai-chat-screen">
+            <div class="ai-chat-header">
+                <button class="btn-close" onclick="switchScreen('screen-dashboard')">←</button>
+                <span>GyanAstra AI Tutor</span>
+            </div>
+            
+            <div class="chat-box" id="chat-history">
+                <div class="msg msg-ai">🤖 Hello! I am your AI English Teacher. Tap the mic and speak in English. I will correct your grammar!</div>
+            </div>
+
+            <div class="ai-mic-area">
+                <p id="ai-mic-status" style="color:#6b7280; font-weight:800; margin-bottom:8px;">TAP MIC TO TALK</p>
+                <button class="btn-mic-large" id="ai-mic-btn" style="width:70px; height:70px; font-size:28px;" onclick="toggleAIChatMic()">🎙️</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* =======================================================
+           👉 API KEY CONFIGURATION
+        ======================================================= */
+        const GEMINI_API_KEY = "YAHAN_APNI_API_KEY_PASTE_KAREIN";
+
+        /* ================= STATE & LOGIC ================= */
+        let currentMode = '';
+        let selectedWords = [];
+        let correctAnswerWords = ["Yo", "quiero", "una", "ensalada"];
+
+        const bgColors = {
+            'purple': '#ce82ff',
+            'green': '#58cc02',
+            'blue': '#1cb0f6',
+            'red': '#ff4b4b',
+            'orange': '#ff914d'
+        };
+
+        function switchScreen(id) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.speechSynthesis.cancel();
+        }
+
+        /* --- START LESSON --- */
+        function startLesson(colorCode, mode) {
+            document.getElementById('lesson-bg').style.background = bgColors[colorCode] || bgColors['purple'];
+            document.getElementById('action-bar').className = "bottom-action-bar";
+            document.getElementById('btn-check').className = "btn-check-action";
+            document.getElementById('btn-check').innerText = "CHECK";
+            document.getElementById('progress-bar').style.width = "40%";
+            document.getElementById('btn-check').disabled = true;
+            document.getElementById('fb-sub').style.display = "none";
+            selectedWords = [];
+            currentMode = mode;
+
+            if (mode === 'translate') {
+                document.getElementById('ui-translate').style.display = "block";
+                document.getElementById('ui-speak').style.display = "none";
+                document.getElementById('q-title').innerText = "Translate this sentence";
+                document.getElementById('q-text').innerText = "I want a salad.";
+                document.getElementById('q-avatar').innerText = "🧑‍🦰";
+                correctAnswerWords = ["Yo", "quiero", "una", "ensalada"];
+                setupWordBlocks(["Yo", "vaso", "quiero", "sin", "una", "ensalada", "jugo"]);
+            } else {
+                document.getElementById('ui-translate').style.display = "none";
+                document.getElementById('ui-speak').style.display = "flex";
+                document.getElementById('q-title').innerText = "Speak this sentence";
+                document.getElementById('q-text').innerText = "Disculpe, por favor.";
+                document.getElementById('q-avatar').innerText = "🐻";
+                document.getElementById('lesson-mic-res').innerText = "TAP TO SPEAK";
+                document.getElementById('btn-check').disabled = false;
+                document.getElementById('btn-check').classList.add('active');
+            }
+
+            switchScreen('screen-lesson');
+        }
+
+        /* --- WORD BLOCKS LOGIC --- */
+        function setupWordBlocks(words) {
+            const bank = document.getElementById('word-bank');
+            const ansBox = document.getElementById('answer-box');
+            bank.innerHTML = "";
+            ansBox.innerHTML = "";
+
+            words.sort(() => Math.random() - 0.5).forEach((word) => {
+                let chip = document.createElement('div');
+                chip.className = "word-chip";
+                chip.innerText = word;
+                
+                chip.onclick = () => {
+                    if (chip.classList.contains('placeholder')) return;
+                    chip.classList.add('placeholder');
+                    
+                    let ansChip = document.createElement('div');
+                    ansChip.className = "word-chip";
+                    ansChip.innerText = word;
+                    
+                    ansChip.onclick = () => {
+                        ansChip.remove();
+                        chip.classList.remove('placeholder');
+                        selectedWords.splice(selectedWords.indexOf(word), 1);
+                        validateCheckButton();
+                    };
+                    
+                    ansBox.appendChild(ansChip);
+                    selectedWords.push(word);
+                    validateCheckButton();
+                };
+                bank.appendChild(chip);
+            });
+        }
+
+        function validateCheckButton() {
+            const btn = document.getElementById('btn-check');
+            if (selectedWords.length > 0) {
+                btn.disabled = false;
+                btn.classList.add('active');
+            } else {
+                btn.disabled = true;
+                btn.classList.remove('active');
+            }
+        }
+
+        /* --- CHECK ANSWER --- */
+        function checkAnswer() {
+            const bar = document.getElementById('action-bar');
+            const btn = document.getElementById('btn-check');
+
+            if (btn.innerText === "CONTINUE") {
+                switchScreen('screen-dashboard');
+                return;
+            }
+
+            let isCorrect = true;
+            if (currentMode === 'translate') {
+                if (selectedWords.length !== correctAnswerWords.length) {
+                    isCorrect = false;
+                } else {
+                    for(let i=0; i<selectedWords.length; i++) {
+                        if(selectedWords[i] !== correctAnswerWords[i]) isCorrect = false;
+                    }
+                }
+            }
+
+            if (isCorrect) {
+                bar.className = "bottom-action-bar correct";
+                document.getElementById('fb-title').innerText = "✅ Excellent!";
+                document.getElementById('progress-bar').style.width = "100%";
+            } else {
+                bar.className = "bottom-action-bar wrong";
+                document.getElementById('fb-title').innerText = "❌ Incorrect";
+                document.getElementById('fb-sub').innerText = `Correct answer: ${correctAnswerWords.join(" ")}`;
+                document.getElementById('fb-sub').style.display = "block";
+            }
+
+            btn.innerText = "CONTINUE";
+            btn.disabled = false;
+        }
+
+        function playAudio() {
+            if('speechSynthesis' in window) {
+                let u = new SpeechSynthesisUtterance(document.getElementById('q-text').innerText);
+                u.lang = 'en-US';
+                window.speechSynthesis.speak(u);
+            }
+        }
+
+        /* --- LESSON MIC LOGIC --- */
+        let lessonSR;
+        function toggleLessonMic() {
+            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if(!SR) return alert("Mic not supported!");
+            if(!lessonSR) {
+                lessonSR = new SR();
+                lessonSR.lang = "en-US";
+                lessonSR.onresult = (e) => {
+                    let text = e.results[0][0].transcript;
+                    document.getElementById('lesson-mic-res').innerText = `You said: "${text}"`;
+                    document.getElementById('lesson-mic-btn').classList.remove('listening');
+                };
+            }
+            lessonSR.start();
+            document.getElementById('lesson-mic-btn').classList.add('listening');
+            document.getElementById('lesson-mic-res').innerText = "Listening...";
+        }
+
+        /* =======================================================
+           REAL AI CHATBOT (GEMINI API)
+        ======================================================= */
+        function openAIChat() {
+            switchScreen('screen-ai');
+        }
+
+        let aiSR;
+        function toggleAIChatMic() {
+            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if(!SR) return alert("Mic not supported!");
+
+            if(!aiSR) {
+                aiSR = new SR();
+                aiSR.lang = 'en-US';
+                aiSR.onresult = async (e) => {
+                    let text = e.results[0][0].transcript;
+                    document.getElementById('ai-mic-btn').classList.remove('recording');
+                    document.getElementById('ai-mic-status').innerText = "TAP MIC TO TALK";
+                    
+                    appendChat('user', text);
+                    let reply = await callGeminiAI(text);
+                    appendChat('ai', reply);
+                    speakText(reply);
+                };
+            }
+
+            aiSR.start();
+            document.getElementById('ai-mic-btn').classList.add('recording');
+            document.getElementById('ai-mic-status').innerText = "Listening...";
+        }
+
+        async function callGeminiAI(userText) {
+            if(GEMINI_API_KEY === "YAHAN_APNI_API_KEY_PASTE_KAREIN" || GEMINI_API_KEY === "") {
+                return "Please put your Gemini API key in the code first (Line 27).";
+            }
+
+            const prompt = `You are a friendly Spoken English Teacher. The user said: "${userText}". Keep your reply under 2 sentences, correct grammar if wrong, and encourage them.`;
+            try {
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+                    method: "POST", headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                });
+                const data = await res.json();
+                return data.candidates[0].content.parts[0].text;
+            } catch(e) {
+                return "Network error. Please check your internet connection.";
+            }
+        }
+
+        function appendChat(role, text) {
+            const box = document.getElementById('chat-history');
+            let div = document.createElement('div');
+            div.className = `msg msg-${role}`;
+            div.innerText = (role === 'ai' ? '🤖 ' : '') + text;
+            box.appendChild(div);
+            box.scrollTop = box.scrollHeight;
+        }
+
+        function speakText(text) {
+            if('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                let u = new SpeechSynthesisUtterance(text);
+                u.lang = 'en-US'; u.rate = 0.9;
+                window.speechSynthesis.speak(u);
+            }
+        }
+    </script>
+</body>
+</html>
