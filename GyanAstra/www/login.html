@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="GyanAstra Drive Login and Sign Up"
+    >
+
+    <meta
+        name="theme-color"
+        content="#0f172a"
+    >
+
+    <title>Login & Sign Up | GyanAstra Drive</title>
+
+    <!-- Login CSS -->
+    <link
+        rel="stylesheet"
+        href="./assets/css/login.css"
+    >
+
+</head>
+
+
+<body>
+
+    <main class="login-card">
+
+        <!-- =====================================
+             LOGO
+        ====================================== -->
+
+        <div
+            class="logo"
+            aria-hidden="true"
+        >
+            🚀
+        </div>
+
+
+        <!-- =====================================
+             LOGIN SECTION
+        ====================================== -->
+
+        <section id="loginSection">
+
+            <h2>
+                GyanAstra Login
+            </h2>
+
+            <p class="form-subtitle">
+                Login to continue your learning journey
+            </p>
+
+
+            <!-- Email / Student ID -->
+
+            <div class="input-group">
+
+                <label for="loginEmail">
+                    Gmail / Student ID
+                </label>
+
+                <input
+                    type="text"
+                    id="loginEmail"
+                    placeholder="e.g. user@gmail.com"
+                    autocomplete="username"
+                    maxlength="100"
+                >
+
+            </div>
+
+
+            <!-- Password -->
+
+            <div class="input-group">
+
+                <label for="loginPass">
+                    Password / PIN
+                </label>
+
+                <div class="password-wrapper">
+
+                    <input
+                        type="password"
+                        id="loginPass"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        maxlength="100"
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        id="loginPasswordToggle"
+                        aria-label="Show password"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Login Button -->
+
+            <button
+                type="button"
+                class="btn-action"
+                id="loginBtn"
+            >
+                Login Securely
+            </button>
+
+
+            <!-- Login Status -->
+
+            <div
+                id="loginStatus"
+                class="status-message"
+                aria-live="polite"
+            ></div>
+
+
+            <!-- Switch To Signup -->
+
+            <div class="switch-text">
+
+                Don't have an account?
+
+                <button
+                    type="button"
+                    class="switch-button"
+                    id="showSignupBtn"
+                >
+                    Sign Up here
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             SIGNUP SECTION
+        ====================================== -->
+
+        <section
+            id="signupSection"
+            class="hidden"
+        >
+
+            <h2>
+                Create Account
+            </h2>
+
+            <p class="form-subtitle">
+                Create your GyanAstra student account
+            </p>
+
+
+            <!-- Full Name -->
+
+            <div class="input-group">
+
+                <label for="signupName">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="signupName"
+                    placeholder="e.g. Aman Kumar"
+                    autocomplete="name"
+                    maxlength="80"
+                >
+
+            </div>
+
+
+            <!-- Email -->
+
+            <div class="input-group">
+
+                <label for="signupEmail">
+                    Gmail Address
+                </label>
+
+                <input
+                    type="email"
+                    id="signupEmail"
+                    placeholder="e.g. aman@gmail.com"
+                    autocomplete="email"
+                    maxlength="100"
+                >
+
+            </div>
+
+
+            <!-- Password -->
+
+            <div class="input-group">
+
+                <label for="signupPass">
+                    Create Password
+                </label>
+
+                <div class="password-wrapper">
+
+                    <input
+                        type="password"
+                        id="signupPass"
+                        placeholder="Minimum 6 characters"
+                        autocomplete="new-password"
+                        maxlength="100"
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        id="signupPasswordToggle"
+                        aria-label="Show password"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Confirm Password -->
+
+            <div class="input-group">
+
+                <label for="signupConfirmPass">
+                    Confirm Password
+                </label>
+
+                <div class="password-wrapper">
+
+                    <input
+                        type="password"
+                        id="signupConfirmPass"
+                        placeholder="Re-enter your password"
+                        autocomplete="new-password"
+                        maxlength="100"
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        id="confirmPasswordToggle"
+                        aria-label="Show password"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Signup Button -->
+
+            <button
+                type="button"
+                class="btn-action"
+                id="signupBtn"
+            >
+                Register & Sign Up
+            </button>
+
+
+            <!-- Signup Status -->
+
+            <div
+                id="signupStatus"
+                class="status-message"
+                aria-live="polite"
+            ></div>
+
+
+            <!-- Switch To Login -->
+
+            <div class="switch-text">
+
+                Already have an account?
+
+                <button
+                    type="button"
+                    class="switch-button"
+                    id="showLoginBtn"
+                >
+                    Login here
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             BACK TO HOME
+        ====================================== -->
+
+        <a
+            href="./index.html"
+            class="back-home"
+        >
+            ← Back to GyanAstra
+        </a>
+
+    </main>
+
+
+    <!-- Authentication JavaScript -->
+    <script src="./assets/js/auth.js"></script>
+
+</body>
+
+</html>

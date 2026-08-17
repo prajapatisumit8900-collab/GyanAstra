@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="GyanAstra Subject Lessons"
+    >
+
+    <title>Subject | GyanAstra</title>
+
+    <link
+        rel="stylesheet"
+        href="./assets/css/subject.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     TOPBAR
+     ========================================= -->
+
+<header class="topbar">
+
+    <div class="top-left">
+
+        <a
+            href="#"
+            id="backButton"
+            class="back-btn"
+            aria-label="Back"
+        >
+            ←
+        </a>
+
+
+        <div class="brand">
+
+            <span class="brand-icon">
+                🚀
+            </span>
+
+            <div>
+
+                <strong>
+                    GyanAstra
+                </strong>
+
+                <small>
+                    SUMITSTUDYIQ
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="top-actions">
+
+        <button
+            id="notificationBtn"
+            type="button"
+            aria-label="Notifications"
+        >
+            🔔
+        </button>
+
+
+        <div
+            class="user-avatar"
+            id="userAvatar"
+        >
+            S
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================
+     MAIN
+     ========================================= -->
+
+<main class="page">
+
+
+    <!-- =====================================
+         SUBJECT HERO
+         ===================================== -->
+
+    <section class="subject-hero">
+
+        <div class="subject-hero-content">
+
+            <span
+                class="eyebrow"
+                id="courseName"
+            >
+                COURSE
+            </span>
+
+
+            <h1 id="subjectTitle">
+                Loading Subject...
+            </h1>
+
+
+            <p id="subjectDescription">
+                Subject information loading...
+            </p>
+
+
+            <div class="subject-meta">
+
+                <span id="lessonCount">
+                    📚 0 Lessons
+                </span>
+
+                <span id="videoCount">
+                    🎥 0 Videos
+                </span>
+
+                <span id="subjectProgress">
+                    📈 0% Complete
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="subject-hero-icon"
+            id="subjectIcon"
+        >
+            📚
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         LESSON HEADER
+         ===================================== -->
+
+    <section class="content-heading">
+
+        <div>
+
+            <span class="section-label">
+                LEARNING PATH
+            </span>
+
+            <h2>
+                Chapters & Lessons
+            </h2>
+
+        </div>
+
+
+        <span
+            id="chapterCount"
+            class="count"
+        >
+            0 Chapters
+        </span>
+
+    </section>
+
+
+
+    <!-- =====================================
+         CHAPTERS
+         ===================================== -->
+
+    <section
+        class="chapters"
+        id="chaptersContainer"
+    ></section>
+
+
+
+    <!-- =====================================
+         LOADING
+         ===================================== -->
+
+    <div
+        class="loading"
+        id="loading"
+    >
+
+        <div class="spinner"></div>
+
+        <p>
+            Subject content loading...
+        </p>
+
+    </div>
+
+
+
+    <!-- =====================================
+         EMPTY
+         ===================================== -->
+
+    <div
+        class="empty hidden"
+        id="emptyState"
+    >
+
+        <div class="empty-icon">
+            📚
+        </div>
+
+
+        <h3>
+            Subject Content Not Found
+        </h3>
+
+
+        <p id="emptyMessage">
+            इस subject का content उपलब्ध नहीं है।
+        </p>
+
+
+        <a
+            href="./courses.html"
+            class="back-btn-large"
+        >
+            ← Back to Courses
+        </a>
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+     ========================================= -->
+
+<script src="./assets/js/subject.js"></script>
+
+
+</body>
+
+</html>

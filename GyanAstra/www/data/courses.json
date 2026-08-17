@@ -1,0 +1,480 @@
+[
+  {
+    "id": "upsc-foundation",
+    "title": "UPSC Foundation Course",
+    "category": "UPSC",
+    "categoryName": "UPSC Civil Services",
+    "description": "UPSC Civil Services Examination की मजबूत foundation तैयार करने के लिए complete beginner-friendly course.",
+    "level": "Beginner",
+    "lessons": 120,
+    "videos": 100,
+    "duration": "80 Hours",
+    "type": "free",
+    "progress": 0,
+    "icon": "🏛️",
+
+    "subjects": [
+
+      {
+        "id": "upsc-polity",
+        "title": "Indian Polity",
+        "description": "भारतीय संविधान, शासन व्यवस्था और राजनीतिक संस्थाओं की तैयारी.",
+        "icon": "⚖️",
+        "lessons": 25,
+        "videos": 22,
+        "progress": 0,
+
+        "chapters": [
+
+          {
+            "id": "polity-introduction",
+            "title": "Introduction to Indian Polity",
+
+            "lessons": [
+
+              {
+                "id": "polity-lesson-01",
+                "title": "भारतीय संविधान का परिचय",
+                "type": "video",
+                "video": "",
+                "duration": "25:30",
+                "pdf": "",
+                "notes": ""
+              },
+
+              {
+                "id": "polity-lesson-02",
+                "title": "संविधान की प्रमुख विशेषताएँ",
+                "type": "video",
+                "video": "",
+                "duration": "28:15",
+                "pdf": "",
+                "notes": ""
+              }
+
+            ]
+          },
+
+
+          {
+            "id": "fundamental-rights",
+            "title": "Fundamental Rights",
+
+            "lessons": [
+
+              {
+                "id": "rights-lesson-01",
+                "title": "मौलिक अधिकार",
+                "type": "video",
+                "video": "",
+                "duration": "32:10",
+                "pdf": "",
+                "notes": ""
+              },
+
+              {
+                "id": "rights-lesson-02",
+                "title": "समानता का अधिकार",
+                "type": "video",
+                "video": "",
+                "duration": "27:45",
+                "pdf": "",
+                "notes": ""
+              }
+
+            ]
+          }
+
+        ]
+      },
+
+
+      {
+        "id": "upsc-history",
+        "title": "Indian History",
+        "description": "प्राचीन, मध्यकालीन और आधुनिक भारतीय इतिहास की systematic preparation.",
+        "icon": "🏺",
+        "lessons": 30,
+        "videos": 26,
+        "progress": 0,
+
+        "chapters": [
+
+          {
+            "id": "ancient-history",
+            "title": "Ancient India",
+
+            "lessons": [
+
+              {
+                "id": "history-lesson-01",
+                "title": "सिंधु घाटी सभ्यता",
+                "type": "video",
+                "video": "",
+                "duration": "30:00",
+                "pdf": "",
+                "notes": ""
+              },
+
+              {
+                "id": "history-lesson-02",
+                "title": "वैदिक सभ्यता",
+                "type": "video",
+                "video": "",
+                "duration": "26:20",
+                "pdf": "",
+                "notes": ""
+              }
+
+            ]
+          },
+
+
+          {
+            "id": "modern-history",
+            "title": "Modern India",
+
+            "lessons": [
+
+              {
+                "id": "modern-history-01",
+                "title": "भारत में यूरोपीय शक्तियों का आगमन",
+                "type": "video",
+                "video": "",
+                "duration": "29:10",
+                "pdf": "",
+                "notes": ""
+              },
+
+              {
+                "id": "modern-history-02",
+                "title": "1857 का विद्रोह",
+                "type": "video",
+                "video": "",
+                "duration": "35:20",
+                "pdf": "",
+                "notes": ""
+              }
+
+            ]
+          }
+
+        ]
+      },
+
+
+      {
+        "id": "upsc-geography",
+        "title": "Indian & World Geography",
+        "description": "Physical Geography, Indian Geography और World Geography की complete preparation.",
+        "icon": "🌍",
+        "lessons": 28,
+        "videos": 24,
+        "progress": 0,
+
+        "chapters": [
+
+          {
+            "id": "physical-geography",
+            "title": "Physical Geography",
+
+            "lessons": [
+
+              {
+                "id": "geography-lesson-01",
+                "title": "पृथ्वी की संरचना",
+                "type": "video",
+                "video": "",
+                "duration": "24:40",
+                "pdf": "",
+                "notes": ""
+              },
+
+              {
+                "id": "geography-lesson-02",
+                "title": "प्लेट विवर्तनिकी",
+                "type": "video",
+                "video": "",
+                "duration": "31:15",
+                "pdf": "",
+                "notes": ""
+              }
+
+            ]
+          },
+
+
+          {
+            "id": "indian-geography",
+            "title": "Indian Geography",
+
+            "lessons": [
+
+              {
+                "id": "indian-geography-01",
+                "title": "भारत की भौगोलिक स्थिति",
+                "type": "video",
+                "video": "",
+                "duration": "22:30",
+                "pdf": "",
+                "notes": ""
+              },
+
+              {
+                "id": "indian-geography-02",
+                "title": "भारत की नदियाँ",
+                "type": "video",
+                "video": "",
+                "duration": "28:45",
+                "pdf": "",
+                "notes": ""
+              }
+
+            ]
+          }
+
+        ]
+      },
+
+
+      {
+        "id": "upsc-economy",
+        "title": "Indian Economy",
+        "description": "भारतीय अर्थव्यवस्था के basic concepts से लेकर UPSC level तक की तैयारी.",
+        "icon": "💰",
+        "lessons": 22,
+        "videos": 18,
+        "progress": 0,
+
+        "chapters": [
+
+          {
+            "id": "economy-basics",
+            "title": "Economy Basics",
+
+            "lessons": [
+
+              {
+                "id": "economy-lesson-01",
+                "title": "अर्थव्यवस्था क्या है?",
+                "type": "video",
+                "video": "",
+                "duration": "20:10",
+                "pdf": "",
+                "notes": ""
+              },
+
+              {
+                "id": "economy-lesson-02",
+                "title": "GDP और GNP",
+                "type": "video",
+                "video": "",
+                "duration": "25:30",
+                "pdf": "",
+                "notes": ""
+              }
+
+            ]
+          }
+
+        ]
+      },
+
+
+      {
+        "id": "upsc-environment",
+        "title": "Environment & Ecology",
+        "description": "Environment, Ecology, Biodiversity और Climate Change की UPSC focused preparation.",
+        "icon": "🌱",
+        "lessons": 18,
+        "videos": 15,
+        "progress": 0,
+
+        "chapters": [
+
+          {
+            "id": "ecology-basics",
+            "title": "Ecology Basics",
+
+            "lessons": [
+
+              {
+                "id": "environment-lesson-01",
+                "title": "पारिस्थितिकी का परिचय",
+                "type": "video",
+                "video": "",
+                "duration": "23:20",
+                "pdf": "",
+                "notes": ""
+              },
+
+              {
+                "id": "environment-lesson-02",
+                "title": "जैव विविधता",
+                "type": "video",
+                "video": "",
+                "duration": "29:40",
+                "pdf": "",
+                "notes": ""
+              }
+
+            ]
+          }
+
+        ]
+      },
+
+
+      {
+        "id": "upsc-current-affairs",
+        "title": "Current Affairs",
+        "description": "UPSC Prelims और Mains के लिए Current Affairs की daily और monthly preparation.",
+        "icon": "📰",
+        "lessons": 20,
+        "videos": 15,
+        "progress": 0,
+
+        "chapters": [
+
+          {
+            "id": "current-affairs-basics",
+            "title": "Current Affairs Foundation",
+
+            "lessons": [
+
+              {
+                "id": "ca-lesson-01",
+                "title": "Current Affairs को कैसे पढ़ें?",
+                "type": "video",
+                "video": "",
+                "duration": "18:30",
+                "pdf": "",
+                "notes": ""
+              },
+
+              {
+                "id": "ca-lesson-02",
+                "title": "UPSC Current Affairs Strategy",
+                "type": "video",
+                "video": "",
+                "duration": "26:10",
+                "pdf": "",
+                "notes": ""
+              }
+
+            ]
+          }
+
+        ]
+      }
+
+    ]
+  },
+
+
+  {
+    "id": "english-foundation",
+    "title": "English Foundation",
+    "category": "English",
+    "categoryName": "English Learning",
+    "description": "Basic English से लेकर confident communication तक step-by-step learning.",
+    "level": "Beginner",
+    "lessons": 50,
+    "videos": 40,
+    "duration": "30 Hours",
+    "type": "free",
+    "progress": 0,
+    "icon": "🇬🇧",
+
+    "subjects": [
+
+      {
+        "id": "english-grammar",
+        "title": "English Grammar",
+        "description": "English grammar को आसान तरीके से सीखें.",
+        "icon": "📖",
+        "lessons": 20,
+        "videos": 17,
+        "progress": 0,
+
+        "chapters": [
+
+          {
+            "id": "grammar-basics",
+            "title": "Grammar Basics",
+
+            "lessons": [
+
+              {
+                "id": "grammar-lesson-01",
+                "title": "Parts of Speech",
+                "type": "video",
+                "video": "",
+                "duration": "20:00",
+                "pdf": "",
+                "notes": ""
+              },
+
+              {
+                "id": "grammar-lesson-02",
+                "title": "Noun और Pronoun",
+                "type": "video",
+                "video": "",
+                "duration": "22:15",
+                "pdf": "",
+                "notes": ""
+              }
+
+            ]
+          }
+
+        ]
+      },
+
+
+      {
+        "id": "english-speaking",
+        "title": "Spoken English",
+        "description": "Daily conversation और practical English speaking की practice.",
+        "icon": "🗣️",
+        "lessons": 18,
+        "videos": 14,
+        "progress": 0,
+
+        "chapters": [
+
+          {
+            "id": "speaking-basics",
+            "title": "Speaking Basics",
+
+            "lessons": [
+
+              {
+                "id": "speaking-lesson-01",
+                "title": "Daily Use English Sentences",
+                "type": "video",
+                "video": "",
+                "duration": "18:20",
+                "pdf": "",
+                "notes": ""
+              },
+
+              {
+                "id": "speaking-lesson-02",
+                "title": "English Conversation Practice",
+                "type": "video",
+                "video": "",
+                "duration": "25:30",
+                "pdf": "",
+                "notes": ""
+              }
+
+            ]
+          }
+
+        ]
+      }
+
+    ]
+  }
+]
