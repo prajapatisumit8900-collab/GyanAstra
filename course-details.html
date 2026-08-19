@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="GyanAstra Course Details"
+    >
+
+    <title>Course Details | GyanAstra</title>
+
+    <link
+        rel="stylesheet"
+        href="./assets/css/course-details.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     TOPBAR
+     ========================================= -->
+
+<header class="topbar">
+
+    <div class="top-left">
+
+        <a
+            href="./courses.html"
+            class="back-btn"
+            aria-label="Back"
+        >
+            ←
+        </a>
+
+
+        <div class="brand">
+
+            <span class="brand-icon">
+                🚀
+            </span>
+
+            <div>
+
+                <strong>
+                    GyanAstra
+                </strong>
+
+                <small>
+                    SUMITSTUDYIQ
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="top-actions">
+
+        <button
+            id="notificationBtn"
+            type="button"
+            aria-label="Notifications"
+        >
+            🔔
+        </button>
+
+
+        <div
+            class="user-avatar"
+            id="userAvatar"
+        >
+            S
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================
+     MAIN
+     ========================================= -->
+
+<main class="page">
+
+
+    <!-- =====================================
+         COURSE HERO
+         ===================================== -->
+
+    <section
+        class="course-hero"
+        id="courseHero"
+    >
+
+        <div class="course-hero-content">
+
+            <span
+                class="course-category"
+                id="courseCategory"
+            >
+                COURSE
+            </span>
+
+
+            <h1 id="courseTitle">
+                Loading Course...
+            </h1>
+
+
+            <p id="courseDescription">
+                Course information loading...
+            </p>
+
+
+            <div class="course-meta">
+
+                <span id="courseLevel">
+                    🎓 Beginner
+                </span>
+
+                <span id="courseLessons">
+                    📚 0 Lessons
+                </span>
+
+                <span id="courseDuration">
+                    ⏱️ 0 Hours
+                </span>
+
+                <span id="courseType">
+                    🆓 Free
+                </span>
+
+            </div>
+
+
+            <div class="progress-wrapper">
+
+                <div class="progress-header">
+
+                    <span>
+                        Your Progress
+                    </span>
+
+                    <strong id="courseProgress">
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress-fill"
+                        id="progressFill"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="course-hero-icon">
+            📚
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         COURSE CONTENT HEADER
+         ===================================== -->
+
+    <section class="content-heading">
+
+        <div>
+
+            <span class="section-label">
+                COURSE CONTENT
+            </span>
+
+            <h2>
+                Subjects & Lessons
+            </h2>
+
+        </div>
+
+
+        <span
+            id="subjectCount"
+            class="count"
+        >
+            0 Subjects
+        </span>
+
+    </section>
+
+
+
+    <!-- =====================================
+         SUBJECTS
+         ===================================== -->
+
+    <section
+        class="subjects-grid"
+        id="subjectsGrid"
+    >
+    </section>
+
+
+
+    <!-- =====================================
+         LOADING
+         ===================================== -->
+
+    <div
+        class="loading"
+        id="loading"
+    >
+
+        <div class="spinner"></div>
+
+        <p>
+            Course content loading...
+        </p>
+
+    </div>
+
+
+
+    <!-- =====================================
+         EMPTY / ERROR
+         ===================================== -->
+
+    <div
+        class="empty hidden"
+        id="emptyState"
+    >
+
+        <div class="empty-icon">
+            📚
+        </div>
+
+        <h3>
+            Course Content Coming Soon
+        </h3>
+
+        <p>
+            Is course ka detailed content
+            jaldi available hoga.
+        </p>
+
+        <a
+            href="./courses.html"
+            class="back-course-btn"
+        >
+            ← Back to Courses
+        </a>
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+     ========================================= -->
+
+<script src="./assets/js/course-details.js"></script>
+
+
+</body>
+
+</html>

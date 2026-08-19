@@ -1,0 +1,821 @@
+/* =========================================
+   GyanAstra Courses
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    background: #0f172a;
+    color: #ffffff;
+    font-family:
+        "Segoe UI",
+        Tahoma,
+        Geneva,
+        Verdana,
+        sans-serif;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================================
+   TOPBAR
+   ========================================= */
+
+.topbar {
+    height: 72px;
+    padding: 0 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: rgba(15, 23, 42, 0.96);
+    border-bottom: 1px solid #1e293b;
+
+    backdrop-filter: blur(12px);
+}
+
+.top-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.back-btn {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+
+    color: #ffffff;
+    font-size: 21px;
+
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    color: #ff9800;
+    border-color: #ff9800;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 11px;
+
+    font-size: 22px;
+}
+
+.brand strong {
+    display: block;
+    color: #ff9800;
+    font-size: 19px;
+}
+
+.brand small {
+    display: block;
+    margin-top: 2px;
+
+    color: #64748b;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.top-actions button {
+    width: 40px;
+    height: 40px;
+
+    background: #1e293b;
+    color: #ffffff;
+
+    border: 1px solid #334155;
+    border-radius: 9px;
+
+    font-size: 16px;
+}
+
+.top-actions button:hover {
+    border-color: #ff9800;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ff9800;
+    color: #111111;
+
+    border-radius: 50%;
+
+    font-weight: 800;
+}
+
+
+/* =========================================
+   PAGE
+   ========================================= */
+
+.page {
+    width: 100%;
+    max-width: 1450px;
+
+    margin: 0 auto;
+    padding: 35px;
+}
+
+
+/* =========================================
+   HERO
+   ========================================= */
+
+.hero {
+    min-height: 190px;
+
+    padding: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            135deg,
+            #172338,
+            #111c30
+        );
+
+    border: 1px solid #26364e;
+    border-radius: 18px;
+
+    overflow: hidden;
+}
+
+.eyebrow {
+    color: #ff9800;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+}
+
+.hero h1 {
+    margin: 8px 0;
+
+    font-size: 34px;
+    line-height: 1.2;
+}
+
+.hero p {
+    margin: 0;
+
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+.hero-icon {
+    width: 110px;
+    height: 110px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 152, 0, 0.08);
+
+    border: 1px solid rgba(255, 152, 0, 0.25);
+    border-radius: 25px;
+
+    font-size: 55px;
+}
+
+
+/* =========================================
+   FILTER AREA
+   ========================================= */
+
+.filter-area {
+    margin-top: 22px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(250px, 1fr)
+        190px
+        190px;
+
+    gap: 12px;
+}
+
+.search {
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 15px;
+
+    background: #172338;
+
+    border: 1px solid #26364e;
+    border-radius: 10px;
+
+    color: #64748b;
+}
+
+.search span {
+    margin-right: 10px;
+}
+
+.search input {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.search input::placeholder {
+    color: #64748b;
+}
+
+.filter-area select {
+    height: 48px;
+
+    padding: 0 13px;
+
+    background: #172338;
+
+    color: #cbd5e1;
+
+    border: 1px solid #26364e;
+    border-radius: 10px;
+
+    outline: none;
+
+    font-size: 12px;
+}
+
+.filter-area select:focus,
+.search:focus-within {
+    border-color: #ff9800;
+}
+
+
+/* =========================================
+   COURSE HEADING
+   ========================================= */
+
+.course-heading {
+    margin-top: 32px;
+    margin-bottom: 16px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.section-label {
+    color: #ff9800;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.course-heading h2 {
+    margin: 5px 0 0;
+
+    font-size: 22px;
+}
+
+#courseCount {
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   COURSE GRID
+   ========================================= */
+
+.course-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+/* =========================================
+   COURSE CARD
+   ========================================= */
+
+.course-card {
+    overflow: hidden;
+
+    background: #172338;
+
+    border: 1px solid #26364e;
+    border-radius: 15px;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-4px);
+
+    border-color: #3b4d67;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================
+   COURSE IMAGE
+   ========================================= */
+
+.course-card-image {
+    height: 155px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1e293b,
+            #0f172a
+        );
+}
+
+.course-placeholder {
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 152, 0, 0.1);
+
+    border: 1px solid rgba(255, 152, 0, 0.25);
+    border-radius: 18px;
+
+    font-size: 34px;
+}
+
+.course-badge {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    padding: 5px 8px;
+
+    background: #ff9800;
+    color: #111111;
+
+    border-radius: 5px;
+
+    font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: 0.8px;
+}
+
+
+/* =========================================
+   COURSE CONTENT
+   ========================================= */
+
+.course-card-content {
+    padding: 18px;
+}
+
+.course-category {
+    color: #ff9800;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+.course-card h3 {
+    margin: 7px 0;
+
+    min-height: 43px;
+
+    color: #ffffff;
+
+    font-size: 17px;
+    line-height: 1.35;
+}
+
+.course-card p {
+    min-height: 48px;
+
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+    line-height: 1.55;
+}
+
+
+/* =========================================
+   COURSE INFO
+   ========================================= */
+
+.course-info {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 15px;
+}
+
+.course-info span {
+    padding: 6px 8px;
+
+    background: #0f172a;
+
+    color: #94a3b8;
+
+    border-radius: 6px;
+
+    font-size: 8px;
+}
+
+
+/* =========================================
+   PROGRESS
+   ========================================= */
+
+.progress-section {
+    margin-top: 16px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 5px;
+
+    overflow: hidden;
+
+    background: #0f172a;
+
+    border-radius: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+
+    background: #ff9800;
+
+    border-radius: 10px;
+
+    transition: width 0.4s ease;
+}
+
+.progress-section small {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #64748b;
+
+    font-size: 8px;
+}
+
+
+/* =========================================
+   BUTTON
+   ========================================= */
+
+.view-course-btn {
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 11px;
+
+    background: #ff9800;
+
+    color: #111111;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    transition: 0.2s;
+}
+
+.view-course-btn:hover {
+    background: #e68a00;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   LOADING
+   ========================================= */
+
+.loading {
+    padding: 50px 20px;
+
+    text-align: center;
+}
+
+.spinner {
+    width: 35px;
+    height: 35px;
+
+    margin: 0 auto 12px;
+
+    border:
+        3px solid #26364e;
+
+    border-top-color: #ff9800;
+
+    border-radius: 50%;
+
+    animation:
+        spin 0.8s linear infinite;
+}
+
+.loading p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================
+   EMPTY
+   ========================================= */
+
+.empty {
+    padding: 60px 20px;
+
+    text-align: center;
+
+    background: #172338;
+
+    border: 1px solid #26364e;
+    border-radius: 15px;
+}
+
+.empty > div {
+    font-size: 40px;
+}
+
+.empty h3 {
+    margin: 12px 0 5px;
+
+    font-size: 17px;
+}
+
+.empty p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================================
+   ERROR
+   ========================================= */
+
+.course-error {
+    grid-column: 1 / -1;
+
+    padding: 50px 20px;
+
+    text-align: center;
+
+    background: #172338;
+
+    border: 1px solid #26364e;
+    border-radius: 15px;
+}
+
+.error-icon {
+    font-size: 40px;
+}
+
+.course-error h3 {
+    margin: 10px 0;
+
+    font-size: 17px;
+}
+
+.course-error p {
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+.course-error button {
+    margin-top: 10px;
+
+    padding: 10px 18px;
+
+    background: #ff9800;
+    color: #111111;
+
+    border: none;
+    border-radius: 7px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 1100px) {
+
+    .course-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    .topbar {
+        height: 64px;
+
+        padding: 0 15px;
+    }
+
+    .page {
+        padding: 20px 15px;
+    }
+
+    .brand small {
+        display: none;
+    }
+
+    .brand strong {
+        font-size: 17px;
+    }
+
+    .hero {
+        min-height: auto;
+
+        padding: 22px;
+    }
+
+    .hero h1 {
+        font-size: 26px;
+    }
+
+    .hero-icon {
+        display: none;
+    }
+
+    .filter-area {
+        grid-template-columns: 1fr;
+    }
+
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .course-heading {
+        align-items: center;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 420px) {
+
+    .course-card-image {
+        height: 135px;
+    }
+
+    .course-card-content {
+        padding: 15px;
+    }
+
+    .course-card h3 {
+        font-size: 16px;
+    }
+
+    .course-info {
+        gap: 5px;
+    }
+
+    .course-info span {
+        font-size: 7px;
+    }
+
+}

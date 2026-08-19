@@ -1,164 +1,893 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Category | GyanAstra</title>
 
-    <!-- 🔒 1. Security Check Script -->
-    <script>
-        if (localStorage.getItem("isGyanAstraLoggedIn") !== "true") {
-            alert("⚠️ Unauthorized Access! Please login first.");
-            window.location.href = "login.html";
-        }
-    </script>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <style>
-        body {
-            margin: 0;
-            padding: 20px;
-            background-color: #0f172a;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            box-sizing: border-box;
-        }
+    <meta
+        name="description"
+        content="GyanAstra Learning Categories"
+    >
 
-        /* Top Bar Styling */
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1000px;
-            margin: 0 auto 20px auto;
-            background: #1e293b;
-            padding: 12px 20px;
-            border-radius: 8px;
-            border: 1px solid #334155;
-        }
-        .user-info {
-            color: #48cae4;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .btn-logout {
-            background: #ef4444;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 13px;
-            transition: 0.3s;
-        }
-        .btn-logout:hover {
-            background: #dc2626;
-        }
+    <meta
+        name="theme-color"
+        content="#0f172a"
+    >
 
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        h1 { color: #ff9800; font-size: 28px; margin-bottom: 5px; }
-        p { color: #cbd5e1; font-size: 15px; }
-        
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .card {
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 12px;
-            padding: 25px;
-            text-align: center;
-            text-decoration: none;
-            color: white;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .card:hover {
-            border-color: #ff9800;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-        }
-        .card-icon {
-            font-size: 45px;
-            margin-bottom: 12px;
-        }
-        .card h3 {
-            color: #ff9800;
-            margin: 0 0 10px 0;
-            font-size: 20px;
-        }
-        .card p {
-            color: #94a3b8;
-            font-size: 13px;
-            line-height: 1.4;
-            margin: 0;
-        }
+    <title>Categories | GyanAstra</title>
 
-        @media screen and (max-width: 600px) {
-            body { padding: 15px; }
-            h1 { font-size: 22px; }
-            .top-bar { flex-direction: column; gap: 10px; text-align: center; }
-        }
-    </style>
+    <link
+        rel="stylesheet"
+        href="./assets/css/categories.css"
+    >
+
 </head>
+
+
 <body>
 
-    <!-- Top User Bar & Logout Button -->
-    <div class="top-bar">
-        <span class="user-info" id="studentWelcome">👤 Student Logged In</span>
-        <button class="btn-logout" onclick="logoutStudent()">Logout 🚪</button>
-    </div>
+    <!-- =========================================
+         APP HEADER
+    ========================================== -->
 
-    <header>
-        <h1>Select Study Category</h1>
-        <p>Choose your target exam or learning module</p>
+    <header class="app-header">
+
+        <div class="header-left">
+
+            <button
+                type="button"
+                class="mobile-menu-btn"
+                id="mobileMenuBtn"
+                aria-label="Open menu"
+            >
+                ☰
+            </button>
+
+            <a
+                href="./categories.html"
+                class="brand"
+            >
+                <span class="brand-icon">🚀</span>
+
+                <span>
+                    <strong>GyanAstra</strong>
+                    <small>SUMITSTUDYIQ</small>
+                </span>
+            </a>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <button
+                type="button"
+                class="header-btn"
+                id="notificationBtn"
+                aria-label="Notifications"
+            >
+                🔔
+            </button>
+
+            <button
+                type="button"
+                class="profile-mini"
+                id="profileBtn"
+            >
+                <span id="profileInitial">S</span>
+            </button>
+
+        </div>
+
     </header>
 
-    <div class="card-grid">
-        <!-- 1. E-Library Link (categories फोल्डर के अंदर) -->
-        <a href="categories/e-library.html" class="card">
-            <div class="card-icon">📚</div>
-            <h3>E-Library & Notes</h3>
-            <p>Access high-quality PDFs, short notes, and complete study kits.</p>
-        </a>
 
-        <!-- 2. AI Audio Teacher Link (categories फोल्डर के अंदर) -->
-        <a href="categories/ai-voice-intro.html" class="card">
-            <div class="card-icon">🤖</div>
-            <h3>AI Audio Teacher</h3>
-            <p>Listen to intelligent voice breakdowns and conceptual classes.</p>
-        </a>
+    <!-- =========================================
+         APP LAYOUT
+    ========================================== -->
 
-        <!-- 3. UPSC Link -->
-        <a href="courses/player.html" class="card">
-            <div class="card-icon">🎯</div>
-            <h3>UPSC & Govt Exams</h3>
-            <p>Comprehensive packages for civil services and competitive exams.</p>
-        </a>
+    <div class="app-layout">
+
+
+        <!-- =====================================
+             SIDEBAR
+        ====================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+        >
+
+            <div class="sidebar-profile">
+
+                <div
+                    class="profile-avatar"
+                    id="profileAvatar"
+                >
+                    S
+                </div>
+
+                <div class="profile-info">
+
+                    <strong id="studentName">
+                        Student
+                    </strong>
+
+                    <span>
+                        Learner
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <nav class="main-nav">
+
+                <a
+                    href="./categories.html"
+                    class="nav-item active"
+                >
+                    <span>🏠</span>
+                    <span>Home</span>
+                </a>
+
+
+                <a
+                    href="./courses.html"
+                    class="nav-item"
+                >
+                    <span>📚</span>
+                    <span>My Courses</span>
+                </a>
+
+
+                <a
+                    href="#progress"
+                    class="nav-item"
+                >
+                    <span>📊</span>
+                    <span>My Progress</span>
+                </a>
+
+
+                <a
+                    href="#practice"
+                    class="nav-item"
+                >
+                    <span>🧠</span>
+                    <span>Practice</span>
+                </a>
+
+
+                <a
+                    href="#library"
+                    class="nav-item"
+                >
+                    <span>📖</span>
+                    <span>E-Library</span>
+                </a>
+
+
+                <a
+                    href="./ai-voice-intro.html"
+                    class="nav-item ai-nav"
+                >
+                    <span>🤖</span>
+                    <span>AI Teacher</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button
+                    type="button"
+                    class="logout-btn"
+                    id="logoutBtn"
+                >
+                    🚪 Logout
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================
+             MAIN CONTENT
+        ====================================== -->
+
+        <main class="main-content">
+
+
+            <!-- =================================
+                 WELCOME
+            ================================== -->
+
+            <section class="welcome-section">
+
+                <div>
+
+                    <span class="welcome-label">
+                        WELCOME BACK 👋
+                    </span>
+
+                    <h1>
+                        Hello,
+                        <span id="welcomeName">
+                            Student
+                        </span>
+                    </h1>
+
+                    <p>
+                        Aaj kya seekhna hai?
+                        Apni learning journey continue karein.
+                    </p>
+
+                </div>
+
+
+                <div class="daily-goal">
+
+                    <div class="goal-icon">
+                        🎯
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Daily Goal
+                        </span>
+
+                        <strong>
+                            <span id="dailyXP">
+                                0
+                            </span>
+                            / 50 XP
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 STATS
+            ================================== -->
+
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        🔥
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Streak
+                        </span>
+
+                        <strong>
+                            <span id="streakCount">
+                                0
+                            </span>
+                            Days
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        ⭐
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Total XP
+                        </span>
+
+                        <strong>
+                            <span id="totalXP">
+                                0
+                            </span>
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        📚
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Courses
+                        </span>
+
+                        <strong>
+                            <span id="courseCount">
+                                0
+                            </span>
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        🏆
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Level
+                        </span>
+
+                        <strong>
+                            <span id="studentLevel">
+                                1
+                            </span>
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 SECTION TITLE
+            ================================== -->
+
+            <section class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        LEARNING PATH
+                    </span>
+
+                    <h2>
+                        Choose Your Learning
+                    </h2>
+
+                </div>
+
+
+                <div class="search-box">
+
+                    <span>
+                        🔍
+                    </span>
+
+                    <input
+                        type="search"
+                        id="categorySearch"
+                        placeholder="Search categories..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 CATEGORY GRID
+            ================================== -->
+
+            <section
+                class="category-grid"
+                id="categoryGrid"
+            >
+
+
+                <!-- UPSC FOUNDATION -->
+
+                <article
+                    class="category-card featured"
+                    data-search="upsc foundation civil services gs foundation"
+                >
+
+                    <div class="card-top">
+
+                        <div class="category-icon">
+                            🎯
+                        </div>
+
+                        <span class="badge">
+                            START HERE
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        UPSC Foundation
+                    </h3>
+
+                    <p>
+                        UPSC Civil Services की complete
+                        foundation preparation शुरू करें।
+                    </p>
+
+                    <div class="card-meta">
+
+                        <span>
+                            📚 Multiple Courses
+                        </span>
+
+                        <span>
+                            🎓 Beginner
+                        </span>
+
+                    </div>
+
+                    <a
+                        href="./courses.html?category=upsc-foundation"
+                        class="card-btn"
+                    >
+                        Start Learning →
+                    </a>
+
+                </article>
+
+
+                <!-- GS -->
+
+                <article
+                    class="category-card"
+                    data-search="gs general studies general study polity history geography economy"
+                >
+
+                    <div class="card-top">
+
+                        <div class="category-icon">
+                            📖
+                        </div>
+
+                        <span class="badge blue-badge">
+                            GS
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        General Studies
+                    </h3>
+
+                    <p>
+                        History, Geography, Polity,
+                        Economy और Environment पढ़ें।
+                    </p>
+
+                    <div class="card-meta">
+
+                        <span>
+                            📚 GS Papers
+                        </span>
+
+                        <span>
+                            🎯 UPSC
+                        </span>
+
+                    </div>
+
+                    <a
+                        href="./courses.html?category=general-studies"
+                        class="card-btn"
+                    >
+                        Explore GS →
+                    </a>
+
+                </article>
+
+
+                <!-- CURRENT AFFAIRS -->
+
+                <article
+                    class="category-card"
+                    data-search="current affairs news daily current affairs newspaper"
+                >
+
+                    <div class="card-top">
+
+                        <div class="category-icon">
+                            📰
+                        </div>
+
+                        <span class="badge green-badge">
+                            DAILY
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Current Affairs
+                    </h3>
+
+                    <p>
+                        Daily current affairs,
+                        important news और analysis।
+                    </p>
+
+                    <div class="card-meta">
+
+                        <span>
+                            📰 Daily
+                        </span>
+
+                        <span>
+                            ⚡ Updated
+                        </span>
+
+                    </div>
+
+                    <a
+                        href="./courses.html?category=current-affairs"
+                        class="card-btn"
+                    >
+                        Read Today →
+                    </a>
+
+                </article>
+
+
+                <!-- MCQ -->
+
+                <article
+                    class="category-card"
+                    data-search="mcq practice quiz questions answer test"
+                >
+
+                    <div class="card-top">
+
+                        <div class="category-icon">
+                            🧠
+                        </div>
+
+                        <span class="badge purple-badge">
+                            PRACTICE
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        MCQ Practice
+                    </h3>
+
+                    <p>
+                        UPSC level MCQs solve करें और
+                        अपनी preparation test करें।
+                    </p>
+
+                    <div class="card-meta">
+
+                        <span>
+                            📝 Practice
+                        </span>
+
+                        <span>
+                            🏆 Score
+                        </span>
+
+                    </div>
+
+                    <a
+                        href="./courses.html?category=mcq"
+                        class="card-btn"
+                    >
+                        Practice Now →
+                    </a>
+
+                </article>
+
+
+                <!-- OPTIONAL -->
+
+                <article
+                    class="category-card"
+                    data-search="optional subject optional subjects upsc sociology geography hindi"
+                >
+
+                    <div class="card-top">
+
+                        <div class="category-icon">
+                            🎓
+                        </div>
+
+                        <span class="badge orange-badge">
+                            OPTIONAL
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Optional Subjects
+                    </h3>
+
+                    <p>
+                        अपने UPSC optional subject की
+                        preparation शुरू करें।
+                    </p>
+
+                    <div class="card-meta">
+
+                        <span>
+                            📚 Subjects
+                        </span>
+
+                        <span>
+                            🎯 Advanced
+                        </span>
+
+                    </div>
+
+                    <a
+                        href="./courses.html?category=optional"
+                        class="card-btn"
+                    >
+                        View Subjects →
+                    </a>
+
+                </article>
+
+
+                <!-- TEST SERIES -->
+
+                <article
+                    class="category-card"
+                    data-search="test series mock test upsc test exam"
+                >
+
+                    <div class="card-top">
+
+                        <div class="category-icon">
+                            🏆
+                        </div>
+
+                        <span class="badge red-badge">
+                            TEST
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Test Series
+                    </h3>
+
+                    <p>
+                        Full length tests और mock exams
+                        देकर अपनी तैयारी check करें।
+                    </p>
+
+                    <div class="card-meta">
+
+                        <span>
+                            📝 Tests
+                        </span>
+
+                        <span>
+                            📊 Ranking
+                        </span>
+
+                    </div>
+
+                    <a
+                        href="./courses.html?category=test-series"
+                        class="card-btn"
+                    >
+                        Take Test →
+                    </a>
+
+                </article>
+
+
+                <!-- E-LIBRARY -->
+
+                <article
+                    class="category-card"
+                    data-search="library ebook pdf books notes study material"
+                >
+
+                    <div class="card-top">
+
+                        <div class="category-icon">
+                            📚
+                        </div>
+
+                        <span class="badge blue-badge">
+                            LIBRARY
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        E-Library
+                    </h3>
+
+                    <p>
+                        Books, PDFs, notes और study
+                        material एक जगह पाएँ।
+                    </p>
+
+                    <div class="card-meta">
+
+                        <span>
+                            📕 Books
+                        </span>
+
+                        <span>
+                            📄 PDFs
+                        </span>
+
+                    </div>
+
+                    <a
+                        href="#library"
+                        class="card-btn"
+                    >
+                        Open Library →
+                    </a>
+
+                </article>
+
+
+                <!-- AI TEACHER -->
+
+                <article
+                    class="category-card ai-card"
+                    data-search="ai teacher artificial intelligence voice teacher doubt tutor"
+                >
+
+                    <div class="card-top">
+
+                        <div class="category-icon">
+                            🤖
+                        </div>
+
+                        <span class="badge ai-badge">
+                            AI
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        AI Teacher
+                    </h3>
+
+                    <p>
+                        AI Teacher से बात करें,
+                        सवाल पूछें और अपनी learning
+                        personalize करें।
+                    </p>
+
+                    <div class="card-meta">
+
+                        <span>
+                            🎙️ Voice
+                        </span>
+
+                        <span>
+                            🧠 AI
+                        </span>
+
+                    </div>
+
+                    <a
+                        href="./ai-voice-intro.html"
+                        class="card-btn"
+                    >
+                        Meet AI Teacher →
+                    </a>
+
+                </article>
+
+
+                <!-- NO RESULT -->
+
+                <div
+                    class="no-results hidden"
+                    id="noResults"
+                >
+
+                    <div>
+                        🔍
+                    </div>
+
+                    <h3>
+                        Category नहीं मिली
+                    </h3>
+
+                    <p>
+                        Search बदलकर फिर कोशिश करें।
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 QUICK AI SECTION
+            ================================== -->
+
+            <section class="ai-banner">
+
+                <div class="ai-banner-icon">
+                    🤖
+                </div>
+
+                <div class="ai-banner-content">
+
+                    <span>
+                        YOUR PERSONAL AI TEACHER
+                    </span>
+
+                    <h2>
+                        Doubt है? AI Teacher से पूछो!
+                    </h2>
+
+                    <p>
+                        Concept समझें, questions पूछें और
+                        अपनी preparation को smart बनाएं।
+                    </p>
+
+                </div>
+
+                <a
+                    href="./ai-voice-intro.html"
+                    class="ai-banner-btn"
+                >
+                    Start AI Teacher →
+                </a>
+
+            </section>
+
+
+        </main>
+
     </div>
 
-    <!-- User Information & Logout Handler Script -->
-    <script>
-        // Display current student ID correctly
-        const student = localStorage.getItem("loggedInStudent") || localStorage.getItem("isGyanAstraLoggedIn") || "Active Student";
-        document.getElementById('studentWelcome').innerText = "👤 Logged in as: " + student;
 
-        function logoutStudent() {
-            localStorage.removeItem("isGyanAstraLoggedIn");
-            localStorage.removeItem("loggedInStudent");
-            alert("Logout Successful!");
-            window.location.href = "login.html";
-        }
-    </script>
+    <!-- Mobile overlay -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+    <script
+        src="./assets/js/categories.js"
+    ></script>
+
 </body>
+
 </html>

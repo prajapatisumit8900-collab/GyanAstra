@@ -2,200 +2,94 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="GyanAstra - Smart Learning Platform"
+    >
+
+    <meta name="theme-color" content="#0f172a">
+
     <title>GyanAstra Drive | SumitStudyIQ</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 20px;
-            background-color: #0f172a;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            box-sizing: border-box;
-            overflow-x: hidden;
-        }
 
-        #welcomeScreen {
-            text-align: center;
-            display: block;
-            animation: fadeIn 1s ease-in-out;
-            max-width: 800px;
-            width: 100%;
-        }
-        .main-title {
-            color: #ff9800;
-            font-size: 55px;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .sub-title {
-            color: #cbd5e1;
-            margin-top: 0;
-            font-size: 24px;
-        }
-        .tag-line {
-            font-size: 22px;
-            margin-top: 30px;
-            color: white;
-            padding: 0 10px;
-        }
-        .btn-start {
-            padding: 12px 25px;
-            font-size: 20px;
-            background-color: #ff9800;
-            color: #111;
-            font-weight: bold;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 25px;
-            transition: 0.3s;
-        }
-        .btn-start:hover {
-            background-color: #e68a00;
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(255, 152, 0, 0.4);
-        }
-
-        #loadingScreen {
-            display: none;
-            text-align: center;
-            max-width: 800px;
-            width: 100%;
-        }
-        .logo-icon {
-            font-size: 80px;
-            margin-bottom: 20px;
-            animation: float 3s ease-in-out infinite;
-        }
-        .app-title {
-            font-size: 40px;
-            font-weight: bold;
-            color: #ff9800;
-            letter-spacing: 2px;
-            margin: 0;
-        }
-        .loading-box {
-            width: 300px;
-            height: 6px;
-            background: #1e293b;
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-            margin: 40px auto 0 auto;
-        }
-        .loading-bar {
-            height: 100%;
-            width: 0%;
-            background: #3b82f6;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #3b82f6;
-        }
-        .loading-text {
-            margin-top: 15px;
-            font-size: 14px;
-            color: #3b82f6;
-            font-weight: bold;
-            animation: pulseText 1.5s infinite;
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: scale(0.9); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        @keyframes loadProgress {
-            0% { width: 0%; }
-            30% { width: 40%; }
-            70% { width: 80%; }
-            100% { width: 100%; }
-        }
-        @keyframes pulseText {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        /* --- Responsive Media Queries --- */
-        @media screen and (max-width: 600px) {
-            .main-title { font-size: 32px; }
-            .sub-title { font-size: 18px; }
-            .tag-line { font-size: 16px; }
-            .btn-start { font-size: 16px; padding: 10px 20px; }
-            .logo-icon { font-size: 60px; }
-            .app-title { font-size: 28px; }
-            .loading-box { width: 220px; }
-        }
-        @media screen and (min-width: 601px) and (max-width: 1024px) {
-            .main-title { font-size: 45px; }
-            .sub-title { font-size: 21px; }
-            .tag-line { font-size: 19px; }
-        }
-        @media screen and (min-width: 1440px) {
-            .main-title { font-size: 70px; }
-            .sub-title { font-size: 30px; }
-            .tag-line { font-size: 26px; }
-            .btn-start { font-size: 24px; padding: 15px 35px; }
-            .logo-icon { font-size: 100px; }
-            .app-title { font-size: 50px; }
-            .loading-box { width: 400px; height: 8px; }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
 
-    <div id="welcomeScreen">
-        <h1 class="main-title">GyanAstra Drive (ज्ञानअस्त्र)</h1>
-        <h3 class="sub-title">By SUMITSTUDYIQ</h3>
-        <p class="tag-line">Aapka Smart Offline AI Teacher aur Selection ka Hathiyar!</p>
-        <button class="btn-start" onclick="startRocketAnimation()">▶ Start Learning</button>
-    </div>
+    <!-- Welcome Screen -->
+    <main id="welcomeScreen">
 
-    <div id="loadingScreen">
-        <div class="logo-icon">🚀</div>
-        <h1 class="app-title">GyanAstra</h1>
-        <p style="color: #94a3b8; font-size: 16px; margin-top: 10px;">Your Secure Offline Learning OS</p>
-        <div class="loading-box">
-            <div class="loading-bar" id="rocketBar"></div>
+        <h1 class="main-title">
+            GyanAstra Drive (ज्ञानअस्त्र)
+        </h1>
+
+        <h2 class="sub-title">
+            By SUMITSTUDYIQ
+        </h2>
+
+        <p class="tag-line">
+            Aapka Smart Offline AI Teacher aur Selection ka Hathiyar!
+        </p>
+
+        <button
+            type="button"
+            class="btn-start"
+            id="startLearningBtn"
+        >
+            ▶ Start Learning
+        </button>
+
+    </main>
+
+
+    <!-- Loading Screen -->
+    <section
+        id="loadingScreen"
+        aria-live="polite"
+        aria-label="Loading GyanAstra"
+    >
+
+        <div
+            class="logo-icon"
+            aria-hidden="true"
+        >
+            🚀
         </div>
-        <div class="loading-text" id="statusText">Initializing Secure Environment...</div>
-    </div>
 
-    <script>
-        function startRocketAnimation() {
-            document.getElementById('welcomeScreen').style.display = 'none';
-            document.getElementById('loadingScreen').style.display = 'block';
-            document.getElementById('rocketBar').style.animation = "loadProgress 3.5s forwards";
+        <h1 class="app-title">
+            GyanAstra
+        </h1>
 
-            const statusText = document.getElementById('statusText');
-            const rocketBar = document.getElementById('rocketBar');
-            
-            setTimeout(() => {
-                statusText.innerText = "Loading DRM Gateway...";
-                statusText.style.color = "#ff9800";
-                rocketBar.style.background = "#ff9800";
-                rocketBar.style.boxShadow = "0 0 10px #ff9800";
-            }, 1500);
+        <p class="loading-subtitle">
+            Your Learning Platform
+        </p>
 
-            setTimeout(() => {
-                statusText.innerText = "System Ready!";
-                statusText.style.color = "#16a34a";
-                rocketBar.style.background = "#16a34a";
-                rocketBar.style.boxShadow = "0 0 10px #16a34a";
-            }, 3000);
+        <div class="loading-box">
 
-            setTimeout(() => {
-                window.location.href = 'login.html'; 
-            }, 3500);
-        }
-    </script>
+            <div
+                class="loading-bar"
+                id="rocketBar"
+            ></div>
+
+        </div>
+
+        <div
+            class="loading-text"
+            id="statusText"
+        >
+            Initializing GyanAstra...
+        </div>
+
+    </section>
+
+
+    <script src="./assets/js/app.js"></script>
+
 </body>
 </html>

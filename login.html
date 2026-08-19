@@ -1,249 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="GyanAstra Drive Login and Sign Up"
+    >
+
+    <meta
+        name="theme-color"
+        content="#0f172a"
+    >
+
     <title>Login & Sign Up | GyanAstra Drive</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 20px;
-            background-color: #0f172a;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
-        .login-card {
-            background: #1e293b;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            width: 100%;
-            max-width: 420px;
-            text-align: center;
-        }
-        h2 { color: #ff9800; margin-bottom: 10px; font-size: 28px; }
-        p { color: #94a3b8; font-size: 14px; margin-bottom: 25px; }
-        .input-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        label { display: block; margin-bottom: 6px; font-size: 14px; color: #cbd5e1; }
-        input {
-            width: 100%;
-            padding: 12px;
-            background: #0f172a;
-            border: 1px solid #334155;
-            border-radius: 6px;
-            color: white;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-        input:focus { border-color: #ff9800; outline: none; }
-        .btn-action {
-            width: 100%;
-            padding: 12px;
-            background: #ff9800;
-            border: none;
-            color: #111;
-            font-weight: bold;
-            font-size: 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-top: 10px;
-        }
-        .btn-action:hover { background: #e68a00; }
-        .switch-text {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #94a3b8;
-        }
-        .switch-text a {
-            color: #ff9800;
-            cursor: pointer;
-            text-decoration: underline;
-            font-weight: bold;
-        }
-        .hidden { display: none; }
 
-        @media screen and (max-width: 480px) {
-            .login-card { padding: 25px; }
-            h2 { font-size: 24px; }
-        }
-    </style>
+    <!-- Login CSS -->
+    <link
+        rel="stylesheet"
+        href="./assets/css/login.css"
+    >
+
 </head>
+
+
 <body>
-    <div class="login-card">
-        <!-- LOGIN FORM -->
-        <div id="loginSection">
-            <h2 id="formTitle">GyanAstra Login</h2>
-            <p id="formSub">Enter your credentials to access secure study material</p>
-            
-            <div class="input-group">
-                <label>Gmail / Student ID</label>
-                <input type="text" id="loginEmail" placeholder="e.g. user@gmail.com">
-            </div>
-            <div class="input-group">
-                <label>Password / PIN</label>
-                <input type="password" id="loginPass" placeholder="Enter your password">
-            </div>
-            <button class="btn-action" id="loginBtn">Login Securely</button>
-            
-            <div class="switch-text">
-                Don't have an account? <a onclick="toggleForm('signup')">Sign Up here</a>
-            </div>
+
+    <main class="login-card">
+
+        <!-- =====================================
+             LOGO
+        ====================================== -->
+
+        <div
+            class="logo"
+            aria-hidden="true"
+        >
+            🚀
         </div>
 
-        <!-- SIGN UP / REGISTER FORM -->
-        <div id="signupSection" class="hidden">
-            <h2>Create Account</h2>
-            <p>Sign up with your Gmail to get instant access</p>
-            
+
+        <!-- =====================================
+             LOGIN SECTION
+        ====================================== -->
+
+        <section id="loginSection">
+
+            <h2>
+                GyanAstra Login
+            </h2>
+
+            <p class="form-subtitle">
+                Login to continue your learning journey
+            </p>
+
+
+            <!-- Email / Student ID -->
+
             <div class="input-group">
-                <label>Full Name</label>
-                <input type="text" id="signupName" placeholder="e.g. Aman Kumar">
+
+                <label for="loginEmail">
+                    Gmail / Student ID
+                </label>
+
+                <input
+                    type="text"
+                    id="loginEmail"
+                    placeholder="e.g. user@gmail.com"
+                    autocomplete="username"
+                    maxlength="100"
+                >
+
             </div>
+
+
+            <!-- Password -->
+
             <div class="input-group">
-                <label>Gmail Address</label>
-                <input type="email" id="signupEmail" placeholder="e.g. aman@gmail.com">
+
+                <label for="loginPass">
+                    Password / PIN
+                </label>
+
+                <div class="password-wrapper">
+
+                    <input
+                        type="password"
+                        id="loginPass"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        maxlength="100"
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        id="loginPasswordToggle"
+                        aria-label="Show password"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
             </div>
-            <div class="input-group">
-                <label>Create Password</label>
-                <input type="password" id="signupPass" placeholder="Set a secure password">
-            </div>
-            <button class="btn-action" id="signupBtn">Register & Sign Up</button>
-            
+
+
+            <!-- Login Button -->
+
+            <button
+                type="button"
+                class="btn-action"
+                id="loginBtn"
+            >
+                Login Securely
+            </button>
+
+
+            <!-- Login Status -->
+
+            <div
+                id="loginStatus"
+                class="status-message"
+                aria-live="polite"
+            ></div>
+
+
+            <!-- Switch To Signup -->
+
             <div class="switch-text">
-                Already have an account? <a onclick="toggleForm('login')">Login here</a>
+
+                Don't have an account?
+
+                <button
+                    type="button"
+                    class="switch-button"
+                    id="showSignupBtn"
+                >
+                    Sign Up here
+                </button>
+
             </div>
-        </div>
-    </div>
 
-    <script>
-        // Form Switcher Logic
-        function toggleForm(type) {
-            if (type === 'signup') {
-                document.getElementById('loginSection').classList.add('hidden');
-                document.getElementById('signupSection').classList.remove('hidden');
-            } else {
-                document.getElementById('signupSection').classList.add('hidden');
-                document.getElementById('loginSection').classList.remove('hidden');
-            }
-        }
+        </section>
 
-        // SIGN UP LOGIC
-        document.getElementById('signupBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('signupName').value.trim();
-            const email = document.getElementById('signupEmail').value.trim();
-            const pass = document.getElementById('signupPass').value.trim();
 
-            if (!name || !email || !pass) {
-                alert("⚠️ Please fill in all fields!");
-                return;
-            }
+        <!-- =====================================
+             SIGNUP SECTION
+        ====================================== -->
 
-            if (!email.includes('@')) {
-                alert("⚠️ Please enter a valid Gmail / Email address!");
-                return;
-            }
+        <section
+            id="signupSection"
+            class="hidden"
+        >
 
-            // Load existing database from LocalStorage
-            let db = {};
-            try {
-                const localDB = localStorage.getItem('gyanAstraStudentsDB');
-                if (localDB) {
-                    db = JSON.parse(localDB);
-                }
-            } catch (err) {
-                console.log("DB Load Error");
-            }
+            <h2>
+                Create Account
+            </h2>
 
-            // Check if user already exists
-            if (db[email]) {
-                alert("⚠️ This Gmail is already registered! Please Login.");
-                toggleForm('login');
-                return;
-            }
+            <p class="form-subtitle">
+                Create your GyanAstra student account
+            </p>
 
-            // Save new user
-            db[email] = {
-                pass: pass,
-                name: name,
-                course: "All Access / General",
-                source: "Website Signup"
-            };
 
-            localStorage.setItem('gyanAstraStudentsDB', JSON.stringify(db));
+            <!-- Full Name -->
 
-            // Also sync to admin table list if available
-            try {
-                let adminUsers = JSON.parse(localStorage.getItem('adminUsers')) || [];
-                adminUsers.push({ name: name, email: email, course: "General", source: "Website" });
-                localStorage.setItem('adminUsers', JSON.stringify(adminUsers));
-            } catch(e) {}
+            <div class="input-group">
 
-            alert("✅ Registration Successful! You can now login with your Gmail.");
-            toggleForm('login');
-            
-            // Clear fields
-            document.getElementById('signupName').value = '';
-            document.getElementById('signupEmail').value = '';
-            document.getElementById('signupPass').value = '';
-        });
+                <label for="signupName">
+                    Full Name
+                </label>
 
-        // LOGIN LOGIC
-        document.getElementById('loginBtn').addEventListener('click', function(e) {
-            e.preventDefault();
+                <input
+                    type="text"
+                    id="signupName"
+                    placeholder="e.g. Aman Kumar"
+                    autocomplete="name"
+                    maxlength="80"
+                >
 
-            const emailInput = document.getElementById('loginEmail').value.trim();
-            const passInput = document.getElementById('loginPass').value.trim();
+            </div>
 
-            if (!emailInput || !passInput) {
-                alert("⚠️ Please enter both Gmail and Password!");
-                return;
-            }
 
-            let db = {
-                "GA-SUMIT": { pass: "123456", name: "Sumit (Owner)" }
-            };
+            <!-- Email -->
 
-            try {
-                const localDB = localStorage.getItem('gyanAstraStudentsDB');
-                if (localDB) {
-                    db = { ...db, ...JSON.parse(localDB) };
-                }
-            } catch (err) {
-                console.log("LocalStorage Error");
-            }
+            <div class="input-group">
 
-            let matchedUser = null;
-            let matchedKey = null;
+                <label for="signupEmail">
+                    Gmail Address
+                </label>
 
-            for (let key in db) {
-                if (key.toLowerCase() === emailInput.toLowerCase()) {
-                    matchedUser = db[key];
-                    matchedKey = key;
-                    break;
-                }
-            }
+                <input
+                    type="email"
+                    id="signupEmail"
+                    placeholder="e.g. aman@gmail.com"
+                    autocomplete="email"
+                    maxlength="100"
+                >
 
-            if (matchedUser && String(matchedUser.pass) === String(passInput)) {
-                localStorage.setItem("isGyanAstraLoggedIn", "true");
-                localStorage.setItem("loggedInStudent", matchedUser.name);
-                localStorage.setItem("loggedInStudentId", matchedKey);
-                
-                alert(`✅ Login Successful! Welcome ${matchedUser.name}`);
-                window.location.href = "categories.html";
-            } else {
-                alert("❌ Invalid Gmail or Password! If you don't have an account, please Sign Up first.");
-            }
-        });
-    </script>
+            </div>
+
+
+            <!-- Password -->
+
+            <div class="input-group">
+
+                <label for="signupPass">
+                    Create Password
+                </label>
+
+                <div class="password-wrapper">
+
+                    <input
+                        type="password"
+                        id="signupPass"
+                        placeholder="Minimum 6 characters"
+                        autocomplete="new-password"
+                        maxlength="100"
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        id="signupPasswordToggle"
+                        aria-label="Show password"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Confirm Password -->
+
+            <div class="input-group">
+
+                <label for="signupConfirmPass">
+                    Confirm Password
+                </label>
+
+                <div class="password-wrapper">
+
+                    <input
+                        type="password"
+                        id="signupConfirmPass"
+                        placeholder="Re-enter your password"
+                        autocomplete="new-password"
+                        maxlength="100"
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        id="confirmPasswordToggle"
+                        aria-label="Show password"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Signup Button -->
+
+            <button
+                type="button"
+                class="btn-action"
+                id="signupBtn"
+            >
+                Register & Sign Up
+            </button>
+
+
+            <!-- Signup Status -->
+
+            <div
+                id="signupStatus"
+                class="status-message"
+                aria-live="polite"
+            ></div>
+
+
+            <!-- Switch To Login -->
+
+            <div class="switch-text">
+
+                Already have an account?
+
+                <button
+                    type="button"
+                    class="switch-button"
+                    id="showLoginBtn"
+                >
+                    Login here
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             BACK TO HOME
+        ====================================== -->
+
+        <a
+            href="./index.html"
+            class="back-home"
+        >
+            ← Back to GyanAstra
+        </a>
+
+    </main>
+
+
+    <!-- Authentication JavaScript -->
+    <script src="./assets/js/auth.js"></script>
+
 </body>
+
 </html>
